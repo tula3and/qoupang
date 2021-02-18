@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="QBlock" />
+    <meta name="keywords" content="Qoupang" />
+    <meta name="description" content="Qoupang" />
+    <title>Qoupang</title>
+    <link rel=" shortcut icon" href="../static/assets/img/favicon.ico">
+    <link rel="icon" href="../static/assets/img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;500;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/theme.css" />
+    <link rel="stylesheet" href="../static/css/theme-dark.css" media="(prefers-color-scheme: dark)">
+    <script>
+      function applySWAG()
+	  {
+		var email = document.getElementById("txtEmail").value;
+        if(email == "")
+        {
+            alert("please, input email")
+            document.getElementById("txtEmail").focus();
+            return false;
+        }
+          
+        $.ajax({
+          type: "GET",
+          url: "../api/v1/mail/"+email,
+          data: "",
+		  async: false,
+          dataType: "json",
+          success: function(response) {
+			var response = JSON.stringify(response);
+            var sendYn = JSON.parse(response).send;
+            var txHash = JSON.parse(response).txHash;
+            if(sendYn)
+            {
+                $(divResult).append("<strong>The verification email was sent successfully.<br/>Please confirm the final QRCODE in the email.<br/><br/><a href='https://baobab.scope.klaytn.com/tx/"+txHash+"?tabId=internalTx' target='_blank'>BlockChain TxHash : "+txHash+"</a></strong>")
+                
+            }
+            else
+                alert("A duplicate application has been made.")
+	  	  }		
+        });
+		return false;
+	  }
+    </script>
+  </head>
+  <body>
+    <!-- Header 시작 -->
+    <header>
+      <div class="container">
+      </div>
+    </header>
+    <!-- Header 끝 -->
+    <!-- Navbar 시작 -->
+    
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid text-uppercase">
+        <div class="collapse navbar-collapse sticky-fixed" id="navbarNav">
+          <form class="d-flex">
+            <button type="button" data-use-dark-mode="true" class="btn btn-dark btn-toggle me-2">
+              Dark
+            </button>
+            <button type="button" data-use-dark-mode="false" class="btn btn-light btn-toggle border">
+              White
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Navbar 끝 -->
+    <!-- Main 시작 -->
+    <main>
+      <!-- Summary 시작 -->
+      <section class="container pt mt" id="summary">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-header fonsiz-xxxl fonwei-en-xxl letsp-sm text-upper color-basic">Welcome !</h2>
+            <p class="color-basic fonsiz-xl fonwei-kr-xs letsp-xs ws-sm mt-4">
+              Hi. Qiskit Hackathon, We are <span class="fonwei-en-xl letsp-md">Qblock </span>team.
+              If you want <span class="fonwei-en-xl letsp-md">SWAG</span>
+            </p>
+            <p class="color-basic fonsiz-xl fonwei-kr-xs letsp-xs ws-sm mt-4">
+              <span class="fonwei-en-xl letsp-md">Simply !! </span><span class="fonwei-en-xl letsp-md">Safety !!</span>
+            </p>
+            <p class="color-basic fonsiz-xl fonwei-kr-xs letsp-xs ws-sm mt-4">
+              We're help you get SWAG.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Summary 끝 -->
+      <!-- Project 시작 -->
+      <section class="container pt mt" id="project">
+        <h2 class="section-header fonsiz-xxxl fonwei-en-xxl letsp-sm text-upper color-basic">SWAG apply</h2>
+        <div class="section-desc fonsiz-sm color-basic-opac letsp-sm ws-xs mt-2 mb-4">
+          If you want to receive SWAG, please enter your e-mail to apply !
+        </div>
+        <div class="card shadow">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table borderless table-hover align-middle">
+                <thead class="border-0 borderless" border="0">
+                  <tr class="fonsiz-sm fonwei-kr-md letsp-sm color-basic-opac text-center vertmid">
+                    <th>Goods</th>
+                    <th>Input e-mail</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="table-title table-title-font-middle" scope="col">
+                        <img src="../static/assets/img/swag.png" width="150" height="200"/>
+                        <br/>
+                        Black T-shirt
+                    </td>
+                    <td>                      
+                          <input id='txtEmail' type='email' name='userEmail' style="width:80%"  />
+                      </td>
+                      <td>
+                          <a data-bs-toggle="modal" data-bs-target="#modal_result" onclick="return applySWAG();" style="cursor: pointer;"><span class="badge bg-grey" style="width:50px;height:30px;text-align:center;vertical-align:middle;">apply</span>
+                          </a>                  
+                                              
+                    </td>
+                  </tr>
+                     
+                </tbody>
+              </table>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+      <!-- Project 끝 -->
+        
+    <!-- 팀원소개 -->
+      <!-- Awards 시작 -->
+       <section class="container pt mt" id="education">
+        <h2 class="section-header fonsiz-xxxl fonwei-en-xxl letsp-sm text-upper color-basic">QBlock Member</h2>
+        <div class="section-desc fonsiz-sm color-basic-opac letsp-sm ws-xs mt-2 mb-4">
+          
+        </div>
+        <div class="row">
+            
+        <!-- 소개 1-->
+          <div class="col-sm-6 col-lg-3 d-flex align-items-stretch">
+            <div class="card mb-3">
+              <div class="pt-5 pb-4">
+                <center>
+                    <img src="../static/assets/img/profile_dykang.png" class="profile_image"/>
+                </center>
+              </div>
+              <div class="card-body">
+                <div>
+                  <h4 class="card-title fonsiz-xl fonwei-en-xxl letsp-xxl text-upper text-center text-primary"> Dayeong Kang</h4>
+                </div>
+                <div class="card-text fonsiz-sm fonwei-kr-sm letsp-sm mb-3 mt-3 px-2">
+                    <span class="ls-0">Student Developer interested in Security, Cloud, and Quantum Computing</span>
+                 </div>
+              </div>
+            </div>
+          </div>
+        <!-- 소개 1-->
+            
+        <!-- 소개 2-->
+          <div class="col-sm-6 col-lg-3 d-flex align-items-stretch">
+            <div class="card mb-3">
+              <div class="pt-5 pb-4">
+                <center>
+                    <img src="../static/assets/img/profile_ycbyun.png" class="profile_image"/>
+                </center>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title fonsiz-xl fonwei-en-xxl letsp-xxl text-upper text-center text-primary">Yu Chul Byun</h4>
+                <div class="card-text fonsiz-sm fonwei-kr-sm letsp-sm mb-3 mt-3 px-2">
+                    <center>
+                        <span class="ls-0">Blockchain Full Stack Engineer</span>
+                    </center>
+                 </div>
+              </div>
+            </div>
+          </div>
+        <!-- 소개 2-->
+            
+        <!-- 소개 3-->
+          <div class="col-sm-6 col-lg-3 d-flex align-items-stretch">
+            <div class="card mb-3">
+              <div class="pt-5 pb-4">
+                <center>
+                    <img src="../static/assets/img/profile_hrkim.jpg" class="profile_image"/>
+                </center>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title fonsiz-xl fonwei-en-xxl letsp-xxl text-upper text-center text-primary">Hyo rin kim</h4>
+                <div class="card-text fonsiz-sm fonwei-kr-sm letsp-sm mb-3 mt-3 px-2">
+                    <center>
+                        <span class="ls-0">Junior BackEnd Engineer 👩‍💻</span>
+                    </center>
+                 </div>
+              </div>
+            </div>
+          </div>
+        <!-- 소개 3-->
+        
+        <!-- 소개 4-->
+          <div class="col-sm-6 col-lg-3 d-flex align-items-stretch">
+            <div class="card mb-3">
+              <div class="pt-5 pb-4">
+                <center>
+                    <img src="../static/assets/img/profile_dwwoo.jpg" class="profile_image"/>
+                </center>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title fonsiz-xl fonwei-en-xxl letsp-xxl text-upper text-center text-primary">Dowoon Woo</h4>
+                <div class="card-text fonsiz-sm fonwei-kr-sm letsp-sm mb-3 mt-3 px-2">
+                    <span class="ls-0">Developer who wants to accumulate various knowledge.</span>
+                 </div>
+              </div>
+            </div>
+          </div>
+        <!-- 소개 4-->
+            
+        <!-- 소개 5-->
+          <div class="col-sm-6 col-lg-3 d-flex align-items-stretch">
+            <div class="card mb-3">
+              <div class="pt-5 pb-4">
+                <center>
+                    <img src="../static/assets/img/qbird.png" class="profile_image"/>
+                </center>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title fonsiz-xl fonwei-en-xxl letsp-xxl text-upper text-center text-primary"> Yoomee Cho</h4>
+                <div class="card-text fonsiz-sm fonwei-kr-sm letsp-sm mb-3 mt-3 px-2">
+                    <center>
+                        <span class="ls-0">Machine Learning Engineer</span>
+                    </center>
+                 </div>
+              </div>
+            </div>
+          </div>
+        <!-- 소개 5-->
+            
+        <!-- 소개 6-->
+          <div class="col-sm-6 col-lg-3 d-flex align-items-stretch">
+            <div class="card mb-3">
+              <div class="pt-5 pb-4">
+                <center>
+                    <img src="../static/assets/img/qbird_hat.png" class="profile_image"/>
+                </center>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title fonsiz-xl fonwei-en-xxl letsp-xxl text-upper text-center text-primary"> Byungjun Kim</h4>
+                <div class="card-text fonsiz-sm fonwei-kr-sm letsp-sm mb-3 mt-3 px-2">
+                    <center>
+                        <span class="ls-0">Digital System Designer</span>
+                    </center>
+                 </div>
+              </div>
+            </div>
+          </div>
+        <!-- 소개 6-->
+            
+        </div>
+      </section>
+    
+        <!-- footer 시작  -->
+        <footer class="container mt-auto mb-5">
+          <div class="social-box text-center">
+            <a class="social-title" href="https://github.com/tula3and/qoupang">GitHub</a>
+          </div>
+          <div>
+            <hr>
+          </div>
+          
+          <div class="license-copy text-center">
+            ⓒ 2021.
+            <a class="fonwei-en-xxl" href="#" data-bs-toggle="modal" data-bs-target="#myModal3">Creative Commons License</a>
+          </div>
+          <div class="modal fade" id="myModal3" tabindex="-1" aria-labelledby="myModal3Label" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="myModal3Label">THEME 라이센스 정책</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center mt-3" mb-5>
+                  <img src="../static/assets/svg/license.svg" alt="">
+                    <p class="modal-desc">
+                      라이센스는 <strong> 크리에이티브 커먼즈 라이센스의 저작자표시-비영리(CC BY-NC)</strong>로 저작자와 출처 등을 표시하면 저작물의 변경, 2차적 저작물의 작성을 포함하여 자유롭게 이용 하실 수 있습니다.<br/>
+                      ( 단, 영리적 이용은 허용되지 않습니다 ) <br/><br/>
+                      테마에 적용된 모든 사진 이미지는 저작권 문제로 인해 절대 사용 하시면 안됩니다.<br/><br/>
+                      문의 : <a href="mailto:kijepark@kijeslab.com">
+                        <span class="fonsiz-md fonwei-en-xl letsp-md color-purple-opac">kijepark@kijeslab.com</span> 
+                      </a>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- footer 끝  -->
+      </section>
+      <!-- Contact 끝  -->
+    </main>
+    <!-- Main 끝 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"></script>
+    <script src="../static/js/script.js"></script>
+    <!--
+    <div id="modal_loading" class="modal fade" tabindex="-1" aria-labelledby="myModal3Label" aria-hidden="true">
+         <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <img src="../static/assets/img/qbird-complete2.gif" width="150px" height="150px"/>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+             </div>
+        </div>
+    </div>
+    -->
+    <!-- 결과 팝업창 보여주기 -->
+    <div id="modal_result" class="modal fade" tabindex="-1" aria-labelledby="myModal3Label" aria-hidden="true">
+         <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                  <h5 class="modal-title" id="myModal3Label">SWAG Apply Result</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center mt-3" mb-5>
+                  <img src="../static/assets/img/qbird_hat.png" width="200px" height="200px"/>
+                    <p id='divResult' class="modal-desc">
+                      
+                    </p>
+                </div>
+                 <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+             </div>
+        </div>
+    </div>
+    
+  </body>
+</html>
+
+<style>
+.profile_image{
+    width: 150px; 
+    height: 150px; 
+    border-radius: 75px
+}
+
+.card.mb-3{
+    width: 100%;
+}
+</style>
+
+<script>
+    //document.getElementById("txtEmail").focus();
+    $(document).ready(function(){
+        window.matchMedia("(prefers-color-scheme: dark)")
+    })
+</script>
