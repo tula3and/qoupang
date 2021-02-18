@@ -28,6 +28,7 @@
   - Use them to make hash values
 - Build a website for participants
   - Input an email
+  - Send QRCODE for email authentication
   - Send it with a hash value to make a block
   - Send a confirmation email to the participant
 
