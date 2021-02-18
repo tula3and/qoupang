@@ -42,11 +42,6 @@ from urllib.parse import unquote_plus
 from qrng import hash8 
 
 
-hoststr = "localhost"
-usrstr = "root"
-passwordstr = "co2bot2020!"
-dbstr = "Chatbot"
-
 application = Flask("Quantum")
 application.config['JWT_TOKEN_LOCATION'] = ['cookies']
 application.config['JWT_ACCESS_COOKIE_PATH'] = '/api'
@@ -114,7 +109,6 @@ def sendemail(email):
     email_and_qrng = email+"|"+qrng
     
     #메일포함 QRCODE 생성
-    #qrcode_url = "https://swagblockchain.run.goorm.io/swag/"+email_and_qrng
     qrcode_url = "https://swagqrng.run.goorm.io/cert?cert="+email_and_qrng
     
     qr_img = qrcode.make(qrcode_url)
@@ -125,7 +119,7 @@ def sendemail(email):
     smtp = smtplib.SMTP('smtp.gmail.com', 587)
     smtp.ehlo()
     smtp.starttls() # TLS 사용시 필요
-    smtp.login('qiskitswag@gmail.com', 'qi!#%sw!!')
+    smtp.login('qiskitswag@gmail.com', '<비번>')
     
     msg = MIMEMultipart('alternative')
     
