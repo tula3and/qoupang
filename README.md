@@ -9,7 +9,7 @@
   - the noise problem in NISQ era
   - to make a real blockchain use case with quantum computing
   - to contribute to the Qiskit community
-- Hope this solution used by this event for sucessful SWAG delivery
+- Hope this solution used by this event for successful SWAG delivery
 
 ## How it works
 
