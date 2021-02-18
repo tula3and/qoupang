@@ -1,12 +1,13 @@
 # Qoupang
 
-- Qiskit Hackathon Project
+- Qiskit Hackathon Project; from [qiskit-hackathon-korea-21](https://github.com/qiskit-community/qiskit-hackathon-korea-21/issues/5)
 - Quantum Blockchain Solution for Logistics
 - The motivation of this project is
   - security issues in logistic
   - the noise problem in NISQ era
   - to make a real blockchain use case with quantum computing
   - to contribute to the Qiskit community
+- Hope this solution used by this event for sucessful SWAG delivery
 
 ## How it works
 
