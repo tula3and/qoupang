@@ -6,7 +6,7 @@
 - Quantum Blockchain Solution for Logistics
 - The motivation of this project is
   - security issues in logistic
-  - the noise problem in NISQ er
+  - the noise problem in NISQ era
   - to make a real blockchain use case with quantum computing
   - to contribute to the Qiskit community
 - Hope this solution used by this event for sucessful SWAG delivery
