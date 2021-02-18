@@ -22,7 +22,7 @@
 
 - Set-up a cloud server using [goorm](https://www.goorm.io/)
 - Build QRNG with Qiskit
-  - Make random numbers with QRNG
+  - Make random numbers with QRNG (reference: https://www.nature.com/articles/s41598-019-56706-2)
   - Use them to make hash values
 - Build a website for participants
   - Input an email
