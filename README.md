@@ -30,4 +30,5 @@
   - Input an email
   - Send it with a hash value to make a block
   - Send QRCODE for email authentication
+- Demo video: [Qoupang](https://youtu.be/nM2pvhyPBj4)
 
