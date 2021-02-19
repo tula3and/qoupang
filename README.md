@@ -3,6 +3,7 @@
 <img src="https://github.com/tula3and/qoupang/blob/main/project_main.png?raw=true" width="700">
 
 - Qiskit Hackathon Project; from [qiskit-hackathon-korea-21](https://github.com/qiskit-community/qiskit-hackathon-korea-21/issues/5)
+  - Presentation is here: https://www.slideshare.net/DayeongKang/qoupang
 - Quantum Blockchain Solution for Logistics
 - The motivation of this project is
   - security issues in logistic
