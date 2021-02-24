@@ -32,4 +32,4 @@
   - Send it with a hash value to make a block
   - Send QRCODE for email authentication
 - Demo video: [Qoupang](https://youtu.be/nM2pvhyPBj4)
-
+- If you want more details about our work, check [this link here](https://tula3and.github.io/hackathon/hackathon-blockchain/#)!
